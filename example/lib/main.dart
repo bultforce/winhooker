@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -71,6 +73,9 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     _winhooker = Winhooker();
+    if(Platform.isLinux){
+      _winhooker.initHooker();
+    }
   }
   @override
   Widget build(BuildContext context) {
@@ -95,47 +100,54 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding:const EdgeInsets.symmetric(horizontal: 40),
                     color: Colors.blue,
                     onPressed: ()async{
-                      keyBoardStreamSubscription = _winhooker.streamKeyboardHook().listen((event) {
-                        debugPrint(event);
-                      });
+                      _winhooker.initHooker();
                     },
                     child: const Text("Start KeyBoard Hook", style: TextStyle(color: Colors.white),),),
                   MaterialButton(
                     padding:const EdgeInsets.symmetric(horizontal: 40),
                     color: Colors.blue,
                     onPressed: ()async{
-                      keyBoardStreamSubscription.cancel();
+                      if(Platform.isMacOS || Platform.isWindows){
+                        keyBoardStreamSubscription = _winhooker.streamKeyboardHook().listen((event) {
+                          debugPrint(event);
+                        });
+                      }else{
+                        _winhooker.initHooker();
+                      }
                     },
-                    child: const Text("Stop KeyBoard Hook", style: TextStyle(color: Colors.white),),),
-                ],
+                    child: const Text("Start KeyBoard Hook", style: TextStyle(color: Colors.white),),),
+                  ],
               ),
             ),
             const SizedBox(height: 10,),
-            Container(
-              color: Colors.white,
-              height: 50,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  MaterialButton(
-                    padding:const EdgeInsets.symmetric(horizontal: 40),
-                    color: Colors.blue,
-                    onPressed: ()async{
-                      mouseStreamSubscription = _winhooker.streamMouseHook().listen((event) {
-                        debugPrint(event);
-                      });
-                    },
-                    child: const Text("Start Mouse Hook", style: TextStyle(color: Colors.white),),),
-                  MaterialButton(
-                    padding: const EdgeInsets.symmetric(horizontal: 40),
-                    color: Colors.blue,
-                    onPressed: ()async{
-                      mouseStreamSubscription.cancel();
-                    },
-                    child: const Text("Stop Mouse Hook", style: TextStyle(color: Colors.white),),),
-                ],
-              ),
-            ),
+            // Container(
+            //   color: Colors.white,
+            //   height: 50,
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+            //     children: [
+            //       MaterialButton(
+            //         padding:const EdgeInsets.symmetric(horizontal: 40),
+            //         color: Colors.blue,
+            //         onPressed: ()async{
+            //           if(Platform.isMacOS || Platform.isWindows){
+            //             mouseStreamSubscription = _winhooker.streamMouseHook().listen((event) {
+            //               debugPrint(event);
+            //             });
+            //           }
+            //
+            //         },
+            //         child: const Text("Start Mouse Hook", style: TextStyle(color: Colors.white),),),
+            //       MaterialButton(
+            //         padding: const EdgeInsets.symmetric(horizontal: 40),
+            //         color: Colors.blue,
+            //         onPressed: ()async{
+            //           mouseStreamSubscription.cancel();
+            //         },
+            //         child: const Text("Stop Mouse Hook", style: TextStyle(color: Colors.white),),),
+            //     ],
+            //   ),
+            // ),
           ],
         ),
       ),
