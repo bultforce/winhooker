@@ -27,7 +27,6 @@ def get_keyboard_event():
         event = events.get(1.0)
         if event is not None:
             keyboard_logger.info('Received event {}'.format(event))
-
 while True:
     get_keyboard_event()
     time.sleep(1)
