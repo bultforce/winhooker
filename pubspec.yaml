@@ -1,6 +1,6 @@
 name: winhooker
-description: A new Flutter project.
-version: 0.0.1
+description: keyboard and mouse event stream
+version: 0.0.3
 homepage: https://github.com/bultforce/winhooker
 
 environment:
