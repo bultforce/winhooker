@@ -28,8 +28,7 @@ public class WinhookerPlugin: NSObject, FlutterPlugin, FlutterStreamHandler  {
                            print("Access Not Enabled")
                            events("Access Keyboard Filed");
                        }
-                       
-                       else{
+                    
                            print("permission passes")
                            keyBoardEventMonitor = EventMonitor(mask: [.keyUp,.keyDown,.mouseMoved,.leftMouseUp,.rightMouseUp,.rightMouseDown,
                                                                       .rightMouseDragged,.leftMouseDown,.leftMouseDragged,.mouseMoved,.flagsChanged,.cursorUpdate,.scrollWheel, .otherMouseDown,
@@ -53,7 +52,7 @@ public class WinhookerPlugin: NSObject, FlutterPlugin, FlutterStreamHandler  {
                                                                           }
                                                                       }
                            keyBoardEventMonitor?.start()
-                       }
+                       
                    } else if (argument == "mouse_event") {
                        self.mouseEventSink = events
                        let options: NSDictionary = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String :  true]
@@ -62,7 +61,7 @@ public class WinhookerPlugin: NSObject, FlutterPlugin, FlutterStreamHandler  {
                            print("Access Not Enabled")
                            events("Access Mouse Filed");
                        }
-                       else{
+                    
                            print("permission passes")
                            keyBoardEventMonitor = EventMonitor(mask: [.keyUp,.keyDown,.mouseMoved,.leftMouseUp,.rightMouseUp,.rightMouseDown,
                                                                       .rightMouseDragged,.leftMouseDown,.leftMouseDragged,.mouseMoved,.flagsChanged,.cursorUpdate,.scrollWheel, .otherMouseDown,
@@ -86,7 +85,7 @@ public class WinhookerPlugin: NSObject, FlutterPlugin, FlutterStreamHandler  {
                                                                           }
                                                                       }
                            keyBoardEventMonitor?.start()
-                       }
+                    
                    } else {
                        events("Not Registered");
                        // Unknown stream listener registered
