@@ -19,12 +19,18 @@ class WinhookerPlugin : public flutter::Plugin {
   // Disallow copy and assign.
   WinhookerPlugin(const WinhookerPlugin&) = delete;
   WinhookerPlugin& operator=(const WinhookerPlugin&) = delete;
-
+ static void showText(LPCTSTR text);
  private:
   // Called when a method is called on this plugin's channel from Dart.
   void HandleMethodCall(
       const flutter::MethodCall<flutter::EncodableValue> &method_call,
       std::unique_ptr<flutter::MethodResult<flutter::EncodableValue>> result);
+    flutter::PluginRegistrarWindows *registrar_;
+    static const char kOnLogCallbackMethod[];
+    static const char kGetVirtualKeyMapMethod[];
+      #ifdef KEYEVENT_DEBUG
+        UINT _codePage;
+      #endif
 };
 
 }  // namespace winhooker

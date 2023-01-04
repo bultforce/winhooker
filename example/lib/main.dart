@@ -3,6 +3,7 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:winhooker/winhooker.dart';
+import 'package:winhooker/winhooker_method_channel.dart';
 
 void main() {
   runApp(const MyApp());
@@ -39,8 +40,7 @@ class _MyAppState extends State<MyApp> {
 
     // If the widget was removed from the tree while the asynchronous platform
     // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
+    // setState to update our non-existent appearancz
 
     setState(() {
       _platformVersion = platformVersion;
@@ -49,8 +49,8 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-        home: HomeScreen()
+    return MaterialApp(
+        home:HomeScreen()
     );
   }
 }
@@ -95,8 +95,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding:const EdgeInsets.symmetric(horizontal: 40),
                     color: Colors.blue,
                     onPressed: ()async{
-                      keyBoardStreamSubscription = _winhooker.streamKeyboardHook().listen((event) {
-                        debugPrint(event);
+                      keyBoardStreamSubscription =_winhooker.streamKeyboardHook().listen((event) {
+                        print("$event");
                       });
                     },
                     child: const Text("Start KeyBoard Hook", style: TextStyle(color: Colors.white),),),
@@ -122,7 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     color: Colors.blue,
                     onPressed: ()async{
                       mouseStreamSubscription = _winhooker.streamMouseHook().listen((event) {
-                        debugPrint(event);
+                        print(event);
                       });
                     },
                     child: const Text("Start Mouse Hook", style: TextStyle(color: Colors.white),),),

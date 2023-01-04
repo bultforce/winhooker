@@ -1,6 +1,6 @@
 name: winhooker
 description: keyboard and mouse event stream
-version: 0.0.5
+version: 0.0.6
 homepage: https://github.com/bultforce/winhooker
 
 environment:
@@ -10,9 +10,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  plugin_platform_interface: ^2.0.2
-  path: ^1.8.0
-  ffi: ^1.0.0
+  plugin_platform_interface: ^2.1.3
+  path: ^1.8.2
+  winhooker_mouse: ^0.0.1
 
 dev_dependencies:
   flutter_test:

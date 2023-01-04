@@ -1,7 +1,6 @@
 
 import 'dart:ffi';
 import 'dart:io' show Platform, Directory;
-import 'package:ffi/ffi.dart';
 import 'package:path/path.dart' as path;
 import 'winhooker_platform_interface.dart';
 // FFI signature of the hello_world C function
@@ -22,6 +21,7 @@ class Winhooker {
 
   Stream<dynamic> streamKeyboardHook() {
     return WinhookerPlatform.instance.streamKeyboardEventFromNative();
+
   }
 
   Stream<dynamic> streamMouseHook() {

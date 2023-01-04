@@ -56,7 +56,7 @@ packages:
       name: ffi
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.1"
+    version: "2.0.1"
   file:
     dependency: transitive
     description:
@@ -164,7 +164,7 @@ packages:
       name: path_provider_windows
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.7"
+    version: "2.1.3"
   platform:
     dependency: transitive
     description:
@@ -178,7 +178,7 @@ packages:
       name: plugin_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.2"
+    version: "2.1.3"
   process:
     dependency: transitive
     description:
@@ -246,14 +246,21 @@ packages:
       name: win32
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.6.1"
+    version: "3.1.3"
   winhooker:
     dependency: "direct main"
     description:
       path: ".."
       relative: true
     source: path
-    version: "0.0.3"
+    version: "0.0.5"
+  winhooker_mouse:
+    dependency: transitive
+    description:
+      name: winhooker_mouse
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.1"
   xdg_directories:
     dependency: transitive
     description:
@@ -262,5 +269,5 @@ packages:
     source: hosted
     version: "0.2.0+1"
 sdks:
-  dart: ">=2.17.6 <3.0.0"
-  flutter: ">=2.8.1"
+  dart: ">=2.18.6 <3.0.0"
+  flutter: ">=3.0.0"

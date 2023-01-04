@@ -4,6 +4,7 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   winhooker
+  winhooker_mouse
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST
