@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   late Winhooker _winhooker;
   late StreamSubscription keyBoardStreamSubscription;
-  late StreamSubscription mouseStreamSubscription;
+  StreamSubscription? mouseStreamSubscription;
   @override
   void initState() {
     super.initState();
@@ -121,16 +121,24 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding:const EdgeInsets.symmetric(horizontal: 40),
                     color: Colors.blue,
                     onPressed: ()async{
-                      mouseStreamSubscription = _winhooker.streamMouseHook().listen((event) {
-                        print(event);
+                      if(mouseStreamSubscription!=null&& mouseStreamSubscription!.isPaused){
+                        mouseStreamSubscription!.resume();
+                      }else{
+                        mouseStreamSubscription = _winhooker.streamMouseHook().listen((event) {
+                      print(event);
                       });
+                      }
+
                     },
                     child: const Text("Start Mouse Hook", style: TextStyle(color: Colors.white),),),
                   MaterialButton(
                     padding: const EdgeInsets.symmetric(horizontal: 40),
                     color: Colors.blue,
                     onPressed: ()async{
-                      mouseStreamSubscription.cancel();
+                      if(mouseStreamSubscription!=null){
+                        mouseStreamSubscription!.pause();
+                      }
+
                     },
                     child: const Text("Stop Mouse Hook", style: TextStyle(color: Colors.white),),),
                 ],

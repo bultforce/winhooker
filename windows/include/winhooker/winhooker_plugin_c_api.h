@@ -9,7 +9,7 @@
 #define FLUTTER_PLUGIN_EXPORT __declspec(dllimport)
 #endif
 
-#if defined(__cplusplus)
+#if defined(__cplusplus)gd
 extern "C" {
 #endif
 
